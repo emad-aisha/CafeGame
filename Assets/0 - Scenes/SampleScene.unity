@@ -838,7 +838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb37a0ecbe08584cbe6917eab3d048a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   actionName: Player
   lockMin: -80
   lockMax: 80
@@ -850,6 +849,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 410087041}
   - {fileID: 832575519}
+  - {fileID: 266624160}
   - {fileID: 339034806}
   - {fileID: 81574233}
-  - {fileID: 266624160}

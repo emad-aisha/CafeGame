@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour {
-    [SerializeField] InputActionAsset inputActions;
     [SerializeField] string actionName;
     InputAction lookAction;
 
@@ -16,17 +15,8 @@ public class CameraController : MonoBehaviour {
     Vector3 lookDirection;
     float upRotation = 0;
 
-    void OnEnable() {
-        inputActions.FindActionMap(actionName).Enable();
-    }
-
-    void OnDisable() {
-        inputActions.FindActionMap(actionName).Disable();
-    }
-
-
     void Start() {
-        lookAction = inputActions.FindActionMap(actionName).FindAction("Look");
+        lookAction = InputManager.instance.GetAction(actionName, "Look");
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

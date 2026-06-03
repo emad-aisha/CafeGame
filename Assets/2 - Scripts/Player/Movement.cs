@@ -44,7 +44,6 @@ public class Movement : MonoBehaviour {
         moveInput = moveAction.ReadValue<Vector2>();
         moveDirection = moveInput.x * transform.right + moveInput.y * transform.forward + jumpVelocity.y * transform.up;
         if (isSprinting) {
-            Debug.Log("sprinting");
             moveDirection.x *= sprintMod;
             moveDirection.z *= sprintMod;
         }
