@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Movement : MonoBehaviour {
-    [SerializeField] string actionName;
+public class MovementController : InputSystems {
     CharacterController controller;
     InputAction moveAction;
     InputAction sprintAction;

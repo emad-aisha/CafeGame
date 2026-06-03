@@ -2,8 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CameraController : MonoBehaviour {
-    [SerializeField] string actionName;
+public class CameraController : InputSystems {
     InputAction lookAction;
 
     [SerializeField] int lockMin;
