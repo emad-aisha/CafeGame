@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
     InputAction jumpAction;
 
     [SerializeField] int speed;
-    [SerializeField, Range(1, 5)] float sprintMod;
+    [SerializeField, Range(1, 2)] float sprintMod;
     [SerializeField] float jumpSpeed;
 
     [SerializeField] float gravity;
