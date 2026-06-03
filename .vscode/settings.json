@@ -68,5 +68,6 @@
         "*.slnx": "*.csproj"
     },
     "dotnet.defaultSolution": "cafe game.slnx",
-    "dotnet.enableWorkspaceBasedDevelopment": false
+    "dotnet.enableWorkspaceBasedDevelopment": false,
+    "todo-tree.ripgrep.ripgrep": "C:\\ProgramData\\chocolatey\\lib\\ripgrep\\tools\\ripgrep-14.1.0-x86_64-pc-windows-msvc\\rg.exe"
 }
