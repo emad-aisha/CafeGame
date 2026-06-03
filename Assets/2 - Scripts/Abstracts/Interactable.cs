@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour, IInteractable {
-    [SerializeField] string preferredInteractionType;
+    [SerializeField] string preferredInteractionType; // TODO: find a way to make this only use preset Options
 
     public abstract void Interact(string interactType);
 

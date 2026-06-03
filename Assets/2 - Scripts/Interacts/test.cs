@@ -5,5 +5,6 @@ public class Test : Interactable {
         if (!CanInteract(interactType)) return;
 
         Debug.Log("Testing Testing, One Two Three...");
+        Debug.Log(interactType);
     }
 }
