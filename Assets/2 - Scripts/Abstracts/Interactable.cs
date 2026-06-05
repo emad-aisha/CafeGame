@@ -5,7 +5,7 @@ public abstract class Interactable : MonoBehaviour, IInteractable {
 
     public abstract void Interact(string interactType);
 
-    protected bool CanInteract(string interactType) {
+    protected virtual bool CanInteract(string interactType) {
         if (interactType != preferredInteractionType.ToString()) {
             Debug.Log("Couldn't interact");
             return false;

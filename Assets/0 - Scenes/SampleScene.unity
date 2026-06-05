@@ -682,7 +682,7 @@ GameObject:
   - component: {fileID: 739598566}
   - component: {fileID: 739598565}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Secondary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f8dd07744947c42a89c320414a1765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Test
-  preferredInteractionType: Secondary
+  preferredInteractionType: 3
 --- !u!65 &739598566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -843,6 +843,134 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1069614744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1069614748}
+  - component: {fileID: 1069614749}
+  - component: {fileID: 1069614747}
+  - component: {fileID: 1069614746}
+  - component: {fileID: 1069614745}
+  m_Layer: 0
+  m_Name: Blender Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1069614745
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069614744}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1069614746
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069614744}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dbcc914119e311d4d8031ba10c3302d3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1069614747
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069614744}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1069614748
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069614744}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.68127, y: 0.5, z: -1.9738898}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2002039927}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1069614749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069614744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887cd2cd5f17b0842a932bac368160dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Blender
+  preferredInteractionType: 0
+  blenderTimer: 2
+  hasItem: 0
 --- !u!1 &1263093762
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,7 +1099,7 @@ GameObject:
   - component: {fileID: 1789250444}
   - component: {fileID: 1789250443}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: RightClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -989,7 +1117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f8dd07744947c42a89c320414a1765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Test
-  preferredInteractionType: Right Click
+  preferredInteractionType: 1
 --- !u!65 &1789250444
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1097,7 +1225,7 @@ GameObject:
   - component: {fileID: 1941823820}
   - component: {fileID: 1941823824}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Primary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1208,7 +1336,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f8dd07744947c42a89c320414a1765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Test
-  preferredInteractionType: Primary
+  preferredInteractionType: 2
+--- !u!1 &2002039926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002039927}
+  m_Layer: 0
+  m_Name: Blender Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2002039927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002039926}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.68127, y: -0.5, z: 6.97389}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1069614748}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2035514243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,7 +1383,7 @@ GameObject:
   - component: {fileID: 2035514245}
   - component: {fileID: 2035514244}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: LeftClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1241,7 +1401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f8dd07744947c42a89c320414a1765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Test
-  preferredInteractionType: Left Click
+  preferredInteractionType: 0
 --- !u!65 &2035514245
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1348,3 +1508,4 @@ SceneRoots:
   - {fileID: 739598569}
   - {fileID: 2035514248}
   - {fileID: 1789250447}
+  - {fileID: 2002039927}
