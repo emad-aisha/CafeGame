@@ -6,4 +6,9 @@ public class Test : Interactable {
 
         Debug.Log("Testing Testing, One Two Three... " + interactType);
     }
+
+    protected override bool CanInteract(string interactType) {
+        if (!MatchType(interactType)) return false;
+        return true;
+    }
 }

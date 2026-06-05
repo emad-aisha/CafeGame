@@ -5,11 +5,13 @@ public abstract class Interactable : MonoBehaviour, IInteractable {
 
     public abstract void Interact(string interactType);
 
-    protected virtual bool CanInteract(string interactType) {
+    protected virtual bool MatchType(string interactType) {
         if (interactType != preferredInteractionType.ToString()) {
             Debug.Log("Couldn't interact");
             return false;
         }
         return true;
     }
+
+    protected abstract bool CanInteract(string interactType);
 }

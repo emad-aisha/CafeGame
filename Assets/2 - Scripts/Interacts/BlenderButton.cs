@@ -1,11 +1,11 @@
 using UnityEngine;
 
 public class BlenderButton : Interactable {
+    [SerializeField] Blender blenderInteract;
     [SerializeField] float blenderTimer;
     float internalTimer = 0;
 
     bool activated = false;
-    [SerializeField] bool hasItem; // TODO: set this from smth else / Serialized is TEMP
 
     void Update() {
         if (activated && internalTimer <= blenderTimer) {
@@ -31,9 +31,9 @@ public class BlenderButton : Interactable {
     }
 
     protected override bool CanInteract(string interactType) {
-        bool finalResult = base.CanInteract(interactType);
+        bool finalResult = MatchType(interactType);
 
-        if (!hasItem) return false;
+        if (!blenderInteract.HasItem()) return false;
         return finalResult;
     }
 }
