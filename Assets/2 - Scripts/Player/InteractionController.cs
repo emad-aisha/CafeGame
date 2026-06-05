@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum InteractionType { LeftClick, RightClick, Primary, Secondary, [InspectorName(null)] Count };
 public class InteractionController : InputSystems {
     [SerializeField] int distance;
     [SerializeField] float interactTimer;
@@ -9,31 +10,17 @@ public class InteractionController : InputSystems {
 
     [SerializeField] LayerMask ignoreLayer;
 
-    InputAction leftClickAction;
-    InputAction rightClickAction;
-    InputAction primaryAction;
-    InputAction secondaryAction;
+    InputAction[] interactActions;
+    int totalTypes;
 
     void Start() {
-        leftClickAction = InputManager.instance.GetAction(actionName, "Left Click");
-        rightClickAction = InputManager.instance.GetAction(actionName, "Right Click");
-        primaryAction = InputManager.instance.GetAction(actionName, "Primary Interact");
-        secondaryAction = InputManager.instance.GetAction(actionName, "Secondary Interact");
+        SetTotalTypes();
+
+        SetInteractActions();
     }
 
     void Update() {
-        //ClickInteract();
-        //ButtonInteract();
         InteractCheck();
-    }
-
-
-    void ClickInteract() {
-        if (leftClickAction.WasPressedThisFrame() || rightClickAction.WasPressedThisFrame()) Debug.Log("click");
-    }
-
-    void ButtonInteract() {
-        if (primaryAction.WasPressedThisFrame() || secondaryAction.WasPressedThisFrame()) Debug.Log("button");
     }
 
     void InteractCheck() {
@@ -59,12 +46,26 @@ public class InteractionController : InputSystems {
     }
 
 
+
     string TryInteract() {
-        if (leftClickAction.WasPressedThisFrame()) return leftClickAction.name;
-        if (rightClickAction.WasPressedThisFrame()) return rightClickAction.name;
-        if (primaryAction.WasPressedThisFrame()) return primaryAction.name;
-        if (secondaryAction.WasPressedThisFrame()) return secondaryAction.name;
+        for (int i = 0; i < totalTypes; i++) {
+            if (interactActions[i].WasPressedThisFrame()) return interactActions[i].name;
+        }
         return "";
+    }
+
+
+    // SETTERS
+    void SetTotalTypes() {
+        totalTypes = (int)InteractionType.Count;
+    }
+
+    void SetInteractActions() {
+        interactActions = new InputAction[totalTypes];
+
+        for (int i = 0; i < totalTypes; i++) {
+            interactActions[i] = InputManager.instance.GetAction(actionName, ((InteractionType)i).ToString());
+        }
     }
 
 }

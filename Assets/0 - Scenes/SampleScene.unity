@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a650f2ebee7a194d9d207a9e7608f76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  actionName: Player
+  actionName: Interaction
   distance: 15
   interactTimer: 0.1
   ignoreLayer:
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f8dd07744947c42a89c320414a1765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Test
-  preferredInteractionType: Secondary Interact
+  preferredInteractionType: Secondary
 --- !u!65 &739598566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1077,7 +1077,7 @@ Transform:
   m_GameObject: {fileID: 1789250442}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: -5}
+  m_LocalPosition: {x: -4.5, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1208,7 +1208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f8dd07744947c42a89c320414a1765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Test
-  preferredInteractionType: Primary Interact
+  preferredInteractionType: Primary
 --- !u!1 &2035514243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,7 +1329,7 @@ Transform:
   m_GameObject: {fileID: 2035514243}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.25, y: 0, z: -5}
+  m_LocalPosition: {x: -2.5, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
