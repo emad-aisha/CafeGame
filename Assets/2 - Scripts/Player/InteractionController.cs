@@ -41,10 +41,9 @@ public class InteractionController : InputSystems {
 
         if (hitInteractable) {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
-            if (interactable != null) interactable.Interact(interactType);
+            if (interactable != null && interactable.CanInteract(interactType)) { interactable.Interact(interactType); }
         }
     }
-
 
 
     string TryInteract() {

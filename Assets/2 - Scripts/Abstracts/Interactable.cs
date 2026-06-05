@@ -1,17 +1,21 @@
 using UnityEngine;
 
-public abstract class Interactable : MonoBehaviour, IInteractable {
-    [SerializeField] InteractionType preferredInteractionType; // TODO: find a way to hide count in inspector
+public abstract class Interactable : MonoBehaviour {
+    [SerializeField] InteractionType preferredInteractionType;
 
     public abstract void Interact(string interactType);
 
-    protected virtual bool MatchType(string interactType) {
+    // can change if interaction needs change (in children)
+    public virtual bool CanInteract(string interactType) {
+        if (!MatchType(interactType)) return false;
+        return true;
+    }
+
+    bool MatchType(string interactType) {
         if (interactType != preferredInteractionType.ToString()) {
-            Debug.Log("Couldn't interact");
             return false;
         }
         return true;
     }
 
-    protected abstract bool CanInteract(string interactType);
 }

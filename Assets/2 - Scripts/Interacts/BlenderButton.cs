@@ -30,10 +30,9 @@ public class BlenderButton : Interactable {
         if (activated) Debug.Log("Started Blending");
     }
 
-    protected override bool CanInteract(string interactType) {
-        bool finalResult = MatchType(interactType);
-
+    public override bool CanInteract(string interactType) {
+        if (!base.CanInteract(interactType)) return false;
         if (!blenderInteract.HasItem()) return false;
-        return finalResult;
+        return true;
     }
 }

@@ -9,11 +9,6 @@ public class Blender : Interactable {
         Debug.Log("Has Item: " + hasItem);
     }
 
-    protected override bool CanInteract(string interactType) {
-        bool finalResult = MatchType(interactType);
-
-        return finalResult;
-    }
 
     public bool HasItem() { return hasItem; }
 }
