@@ -25,16 +25,16 @@ public class InteractionController : InputSystems {
 
     void InteractCheck() {
         if (internalInteractTimer <= 0) {
-            if (TryInteract() == "") return;
+            if (GetInputAction() == null) return;
             internalInteractTimer = interactTimer;
-            Interact(TryInteract());
+            Interact(GetInputAction());
         }
         else {
             internalInteractTimer -= Time.deltaTime;
         }
     }
 
-    void Interact(string interactType) {
+    void Interact(InputAction interactType) {
         RaycastHit hit;
         bool hitInteractable = Physics.Raycast(GameManager.instance.cameraController.transform.position, GameManager.instance.cameraController.transform.forward,
             out hit, distance, ~ignoreLayer);
@@ -45,12 +45,11 @@ public class InteractionController : InputSystems {
         }
     }
 
-
-    string TryInteract() {
+    InputAction GetInputAction() {
         for (int i = 0; i < totalTypes; i++) {
-            if (interactActions[i].WasPressedThisFrame()) return interactActions[i].name;
+            if (interactActions[i].WasPressedThisFrame()) return interactActions[i];
         }
-        return "";
+        return null;
     }
 
 

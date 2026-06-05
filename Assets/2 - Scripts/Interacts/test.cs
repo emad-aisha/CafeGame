@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Test : Interactable {
-    override public void Interact(string interactType) {
+    override public void Interact(InputAction interactType) {
         if (!CanInteract(interactType)) return;
 
-        Debug.Log("Testing Testing, One Two Three... " + interactType);
+        Debug.Log("Interact: " + interactType);
     }
 
 }

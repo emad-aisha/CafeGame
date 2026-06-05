@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BlenderButton : Interactable {
     [SerializeField] Blender blenderInteract;
@@ -23,14 +24,14 @@ public class BlenderButton : Interactable {
 
     }
 
-    public override void Interact(string interactType) {
+    public override void Interact(InputAction interactType) {
         if (!CanInteract(interactType)) return;
         activated = !activated;
 
         if (activated) Debug.Log("Started Blending");
     }
 
-    public override bool CanInteract(string interactType) {
+    public override bool CanInteract(InputAction interactType) {
         if (!base.CanInteract(interactType)) return false;
         if (!blenderInteract.HasItem()) return false;
         return true;
