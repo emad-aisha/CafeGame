@@ -36,7 +36,7 @@ public class InteractionController : InputSystems {
 
     void Interact(InputAction interactType) {
         RaycastHit hit;
-        bool hitInteractable = Physics.Raycast(GameManager.instance.cameraController.transform.position, GameManager.instance.cameraController.transform.forward,
+        bool hitInteractable = Physics.Raycast(GameManager.instance.mainCamera.transform.position, GameManager.instance.mainCamera.transform.forward,
             out hit, distance, ~ignoreLayer);
 
         if (hitInteractable) {

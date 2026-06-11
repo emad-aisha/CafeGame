@@ -12,11 +12,6 @@ public abstract class Interactable : MonoBehaviour {
         return true;
     }
 
-    bool MatchType(string interactType) {
-        if (interactType != preferredInteractionType.ToString()) {
-            return false;
-        }
-        return true;
-    }
+    protected bool MatchType(string interactType) { return interactType == preferredInteractionType.ToString(); }
 
 }

@@ -4,11 +4,13 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
     public CameraController cameraController;
+    public Camera mainCamera;
 
     void Awake() {
         if (instance == null) instance = this;
 
-        cameraController = Camera.main.GetComponent<CameraController>();
+        mainCamera = Camera.main;
+        cameraController = mainCamera.GetComponent<CameraController>();
     }
 
 

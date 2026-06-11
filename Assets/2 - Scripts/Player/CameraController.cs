@@ -35,4 +35,18 @@ public class CameraController : InputSystems {
 
         if (showRaycast) Debug.DrawRay(transform.position, transform.forward * 10, Color.green);
     }
+
+    public void Disable() {
+        enabled = false;
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void Enable() {
+        enabled = true;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 }
