@@ -2,8 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CameraController : MonoBehaviour {
-    [SerializeField] string actionName;
+public class CameraController : InputSystems {
     InputAction lookAction;
 
     [SerializeField] int lockMin;
@@ -35,5 +34,19 @@ public class CameraController : MonoBehaviour {
         transform.parent.Rotate(lookDirection.x * Vector3.up);
 
         if (showRaycast) Debug.DrawRay(transform.position, transform.forward * 10, Color.green);
+    }
+
+    public void Disable() {
+        enabled = false;
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void Enable() {
+        enabled = true;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
