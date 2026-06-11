@@ -413,7 +413,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Mouse Movement",
+                    "name": "MouseMovement",
                     "type": "Value",
                     "id": "d5182462-8d4b-48c2-a71c-1fcceb1302be",
                     "expectedControlType": "Vector2",
@@ -529,7 +529,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Mouse Movement",
+                    "action": "MouseMovement",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

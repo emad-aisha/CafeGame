@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum InteractionType { LeftClick, RightClick, Primary, Secondary, [InspectorName(null)] Count };
+public enum InteractionType { LeftClick, RightClick, Primary, Secondary, MouseMovement, [InspectorName(null)] Count };
 public class InteractionController : InputSystems {
     [SerializeField] int distance;
     [SerializeField] float interactTimer;
@@ -27,21 +27,21 @@ public class InteractionController : InputSystems {
         if (internalInteractTimer <= 0) {
             if (GetInputAction() == null) return;
             internalInteractTimer = interactTimer;
-            Interact(GetInputAction());
+            Interact();
         }
         else {
             internalInteractTimer -= Time.deltaTime;
         }
     }
 
-    void Interact(InputAction interactType) {
+    void Interact() {
         RaycastHit hit;
         bool hitInteractable = Physics.Raycast(GameManager.instance.mainCamera.transform.position, GameManager.instance.mainCamera.transform.forward,
             out hit, distance, ~ignoreLayer);
 
         if (hitInteractable) {
-            Interactable interactable = hit.collider.GetComponent<Interactable>();
-            if (interactable != null && interactable.CanInteract(interactType)) { interactable.Interact(interactType); }
+            IInteractable interaction = hit.collider.GetComponent<IInteractable>();
+            if (interaction != null) { interaction.Interact(GetInputActionType()); }
         }
     }
 
@@ -52,10 +52,17 @@ public class InteractionController : InputSystems {
         return null;
     }
 
+    InteractionType GetInputActionType() {
+        for (int i = 0; i < totalTypes; i++) {
+            if (interactActions[i].WasPressedThisFrame()) return (InteractionType)i;
+        }
+        return InteractionType.Count;
+    }
+
 
     // SETTERS
     void SetTotalTypes() {
-        totalTypes = (int)InteractionType.Count;
+        totalTypes = (int)InteractionType.Count - 1; // Don't include Mouse Movement
     }
 
     void SetInteractActions() {
