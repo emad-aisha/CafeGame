@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Hold : MonoBehaviour, IInteractable {
-    [SerializeField] InteractionType neededInteractionType;
+public class Hold : NeededType, IInteractable {
     [SerializeField] float holdTimer;
 
     InputAction holdAction;
@@ -34,8 +33,9 @@ public class Hold : MonoBehaviour, IInteractable {
 
     }
 
-    public void Interact(InteractionType _interactionType) {
+    public override void Interact(InteractionType _interactionType) {
         if (neededInteractionType != _interactionType) return;
+        hasInteracted = true;
         isHeld = true;
         holdAction = InputManager.instance.GetAction("Interaction", neededInteractionType.ToString());
 
@@ -45,7 +45,10 @@ public class Hold : MonoBehaviour, IInteractable {
 
     void ResetData() {
         internalTimer = 0;
+
         isHeld = false;
+        hasInteracted = false;
+
         holdAction = null;
     }
 }
