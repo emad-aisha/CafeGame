@@ -2,7 +2,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 // TODO: move to somewhere that makes sense
-public enum InteractionType { LeftClick, RightClick, Primary, Secondary, [InspectorName(null)] MouseMovement, [InspectorName(null)] Count };
+public enum InteractionType {
+    [InspectorName("Left Click")] LeftClick,
+    [InspectorName("Right Click")] RightClick,
+    Primary,
+    Secondary,
+    [InspectorName(null)] Count
+};
+
 public class InteractionController : InputSystems {
     [SerializeField] int distance;
     [SerializeField] float interactTimer;
@@ -15,7 +22,6 @@ public class InteractionController : InputSystems {
 
     void Start() {
         SetTotalTypes();
-
         SetInteractActions();
     }
 
@@ -36,6 +42,7 @@ public class InteractionController : InputSystems {
 
     void Interact() {
         RaycastHit hit;
+
         bool hitInteractable = Physics.Raycast(GameManager.instance.mainCamera.transform.position, GameManager.instance.mainCamera.transform.forward,
             out hit, distance, ~ignoreLayer);
 
@@ -62,7 +69,7 @@ public class InteractionController : InputSystems {
 
     // SETTERS
     void SetTotalTypes() {
-        totalTypes = (int)InteractionType.Count - 1; // Don't include Mouse Movement
+        totalTypes = (int)InteractionType.Count;
     }
 
     void SetInteractActions() {

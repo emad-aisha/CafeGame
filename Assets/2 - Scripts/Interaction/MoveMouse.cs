@@ -39,7 +39,7 @@ public class MoveMouse : NeededType, IInteractable {
         hasInteracted = true;
         GameManager.instance.cameraController.Disable();
 
-        moveAction = InputManager.instance.GetAction("Interaction", InteractionType.MouseMovement.ToString());
+        moveAction = InputManager.instance.GetAction("Interaction", "MouseMovement");
         holdAction = InputManager.instance.GetAction("Interaction", _interactionType.ToString());
         isHeld = true;
     }
