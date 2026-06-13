@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum InteractionType { LeftClick, RightClick, Primary, Secondary, MouseMovement, [InspectorName(null)] Count };
+public enum InteractionType { LeftClick, RightClick, Primary, Secondary, [InspectorName(null)] MouseMovement, [InspectorName(null)] Count };
 public class InteractionController : InputSystems {
     [SerializeField] int distance;
     [SerializeField] float interactTimer;

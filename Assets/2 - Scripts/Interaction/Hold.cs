@@ -9,6 +9,7 @@ public class Hold : NeededType, IInteractable {
     bool isHeld;
 
     void Update() {
+        if (!hasInteracted) return;
         if (holdAction == null) return;
 
         // holding logic
