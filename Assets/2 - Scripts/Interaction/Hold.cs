@@ -9,13 +9,9 @@ public class Hold : NeededType, IInteractable {
     bool isHeld;
 
     void Update() {
-        if (!hasInteracted) return;
-        if (holdAction == null) return;
-
-        // holding logic
-        if (holdAction.IsPressed()) { isHeld = true; }
-        else { isHeld = false; }
-
+        if (Escape()) return;
+        
+        HoldLogic();
 
         if (isHeld) {
             if (internalTimer <= holdTimer) {
@@ -34,7 +30,7 @@ public class Hold : NeededType, IInteractable {
 
     }
 
-    public override void Interact(InteractionType _interactionType) {
+    public void Interact(InteractionType _interactionType) {
         if (neededInteractionType != _interactionType) return;
         hasInteracted = true;
         isHeld = true;
@@ -43,6 +39,12 @@ public class Hold : NeededType, IInteractable {
         Debug.Log("Start Hold");
     }
 
+    public bool Escape() { return !hasInteracted || holdAction == null; }
+
+    void HoldLogic() {
+        if (holdAction.IsPressed()) { isHeld = true; }
+        else { isHeld = false; }
+    }
 
     void ResetData() {
         internalTimer = 0;

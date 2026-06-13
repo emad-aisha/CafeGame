@@ -1,7 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// TODO: move to somewhere that makes sense
 public enum InteractionType { LeftClick, RightClick, Primary, Secondary, [InspectorName(null)] MouseMovement, [InspectorName(null)] Count };
 public class InteractionController : InputSystems {
     [SerializeField] int distance;
