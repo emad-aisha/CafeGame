@@ -13,6 +13,8 @@ public class MoveMouse : NeededType, IInteractable {
     InputAction holdAction;
     bool isHeld;
 
+    // TODO: set this up a bounds system ig
+
     void Update() {
         if (Escape()) return;
         if (!IsMoving()) return;
@@ -56,6 +58,5 @@ public class MoveMouse : NeededType, IInteractable {
         if (shouldBeHeld) { isHeld = holdAction.IsPressed(); }
         else isHeld = true;
     }
-
 
 }
