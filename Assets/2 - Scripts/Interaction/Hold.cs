@@ -48,7 +48,7 @@ public class Hold : NeededType, IInteractable {
     }
 
     void ResetData() {
-        MenuManager.instance.DisableText(interactText);
+        MenuManager.instance.DisableText();
         internalTimer = 0;
 
         isHeld = false;

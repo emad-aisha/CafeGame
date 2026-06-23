@@ -27,7 +27,7 @@ public class MoveMouse : NeededType, IInteractable {
         }
         else if (internalTimer > moveTimer) {
             Debug.Log("Finished Moving");
-            MenuManager.instance.DisableText(interactText);
+            MenuManager.instance.DisableText();
             GameManager.instance.cameraController.Enable();
             internalTimer = 0;
             hasInteracted = false;

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Click Text
   m_EditorClassIdentifier: Assembly-CSharp::InteractText
   text: Clicked!
-  timeOnScreen: 0.5
+  timeOnScreen: 0.25
