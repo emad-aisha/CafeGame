@@ -10,7 +10,7 @@ public class Hold : NeededType, IInteractable {
 
     void Update() {
         if (Escape()) return;
-        
+
         HoldLogic();
 
         if (isHeld) {
@@ -32,6 +32,7 @@ public class Hold : NeededType, IInteractable {
 
     public void Interact(InteractionType _interactionType) {
         if (neededInteractionType != _interactionType) return;
+        MenuManager.instance.EnableText(interactText);
         hasInteracted = true;
         isHeld = true;
         holdAction = InputManager.instance.GetAction("Interaction", neededInteractionType.ToString());
@@ -47,6 +48,7 @@ public class Hold : NeededType, IInteractable {
     }
 
     void ResetData() {
+        MenuManager.instance.DisableText(interactText);
         internalTimer = 0;
 
         isHeld = false;

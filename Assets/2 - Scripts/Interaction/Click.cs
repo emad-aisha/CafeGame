@@ -9,6 +9,7 @@ public class Click : NeededType, IInteractable {
 
     public void Interact(InteractionType _interactionType) {
         if (neededInteractionType != _interactionType) return;
+        StartCoroutine(MenuManager.instance.FlashInteract(interactText));
         hasInteracted = true;
         Debug.Log("Click");
     }
