@@ -91,22 +91,22 @@ public class MenuManager : MonoBehaviour {
     public void ShowHoldBar(float min, float max) {
         // TODO: make this not affect not needed variables
         greenRange.GetComponent<RectTransform>().anchoredPosition = new Vector2(min, 0);
-        greenRange.GetComponent<RectTransform>().sizeDelta = new Vector2(max - min, 50);
-        holdRange.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+        greenRange.GetComponent<RectTransform>().sizeDelta = new Vector2(max, greenRange.GetComponent<RectTransform>().sizeDelta.y);
+        holdRange.GetComponent<RectTransform>().sizeDelta = new Vector2(0, holdRange.GetComponent<RectTransform>().sizeDelta.y);
 
         holdBarObject.SetActive(true);
     }
 
     public void HideHoldBar() {
         greenRange.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        greenRange.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 50);
-        holdRange.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+        greenRange.GetComponent<RectTransform>().sizeDelta = new Vector2(0, greenRange.GetComponent<RectTransform>().sizeDelta.y);
+        holdRange.GetComponent<RectTransform>().sizeDelta = new Vector2(0, holdRange.GetComponent<RectTransform>().sizeDelta.y);
 
         holdBarObject.SetActive(false);
     }
 
     public void UpdateHoldBar(float holdValue) {
-        holdRange.GetComponent<RectTransform>().sizeDelta = new Vector2(holdValue, 50);
+        holdRange.GetComponent<RectTransform>().sizeDelta = new Vector2(holdValue, holdRange.GetComponent<RectTransform>().sizeDelta.y);
     }
 
 }

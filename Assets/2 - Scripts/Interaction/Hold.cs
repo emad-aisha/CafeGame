@@ -2,8 +2,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Hold : NeededType, IInteractable {
-    [SerializeField] float minHold;
-    [SerializeField] float maxHold;
+    [SerializeField, Range(200, 400)] float UIscale;
+
+    [SerializeField, Range(1.2f, 1.8f)] float minHold;
+    [SerializeField, Range(0, 0.5f)] float maxHold;
 
     [SerializeField] InteractText endedWrong;
     [SerializeField] InteractText ended;
@@ -19,6 +21,7 @@ public class Hold : NeededType, IInteractable {
 
         if (isHeld) {
             internalTimer += Time.deltaTime;
+            MenuManager.instance.UpdateHoldBar(internalTimer * UIscale);
         }
         else {
             if (internalTimer < minHold) { // early
@@ -32,6 +35,7 @@ public class Hold : NeededType, IInteractable {
             }
 
             ResetData();
+            MenuManager.instance.HideHoldBar();
         }
 
     }
@@ -39,6 +43,7 @@ public class Hold : NeededType, IInteractable {
     public void Interact(InteractionType _interactionType) {
         if (neededInteractionType != _interactionType) return;
         MenuManager.instance.EnableText(interactText);
+        MenuManager.instance.ShowHoldBar(minHold * UIscale, maxHold * UIscale);
         hasInteracted = true;
         isHeld = true;
         holdAction = InputManager.instance.GetAction("Interaction", neededInteractionType.ToString());
