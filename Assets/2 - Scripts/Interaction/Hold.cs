@@ -27,7 +27,7 @@ public class Hold : NeededType, IInteractable {
             if (internalTimer < minHold) { // early
                 StartCoroutine(MenuManager.instance.FlashInteract(endedWrong));
             }
-            else if (internalTimer > maxHold) { // late
+            else if (internalTimer > maxHold + minHold) { // late
                 StartCoroutine(MenuManager.instance.FlashInteract(endedWrong));
             }
             else { // just right

@@ -1,112 +1,94 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+using static MenuManagerHelper;
+
 // TODO: change into seperate managers?
 public class MenuManager : MonoBehaviour {
-    enum Type { Set, Flash };
+    [HideInInspector]
     public static MenuManager instance;
+    private MenuManagerHelper Helper;
 
+    // TODO: organize PLEASE
     [SerializeField] Transform canvasParent;
 
-    // TODO: make flash ones into array + move up 
-    [SerializeField] GameObject setInteractObject;
-    [SerializeField] TMP_Text setInteractionText;
-
+    [Header("Interact Popups")]
     [SerializeField] GameObject flashInteractObject;
-
+    [SerializeField] GameObject setInteractObject;
     [SerializeField] int tranformIncrement;
-    int flashObjects;
-    int objects;
 
+    [Header("Holding Bar UI")]
+    [SerializeField] GameObject holdBarObject;
+    [SerializeField] GameObject greenRange;
+    [SerializeField] GameObject holdRange;
 
     void Awake() {
         if (instance == null) instance = this;
-        flashObjects = -1;
-        objects = 0;
+        SetHelper();
     }
+
+    void SetHelper() {
+        Helper = new();
+        Helper.SetHoldBarData(greenRange, holdRange);
+        Helper.SetInteractData(setInteractObject);
+
+    }
+
 
     void Update() {
-        if (objects == 0) { DecrementFlashObjects(); }
+        Helper.UpdateInteract();
     }
 
-    // interact text =====================================
-    // flash on screen
-    // TODO: clean this up
+    // INTERACT POPUP ========================================================================
+    // FLASH
     public IEnumerator FlashInteract(InteractText interactText, float time = 0f) {
-        flashObjects++;
-        GameObject flashObject = Instantiate(flashInteractObject);
-        flashObject.transform.SetParent(canvasParent);
+        Helper.IncFlashObjects();
+        Helper.IncObjects();
+        GameObject flashObject = Instantiate(flashInteractObject, canvasParent);
         flashObject.SetActive(true);
-        objects++;
 
-        Vector2 textTransform = Vector2.zero;
-        textTransform.y = tranformIncrement * flashObjects;
-
-        flashObject.GetComponent<RectTransform>().anchoredPosition += textTransform;
-
-        TMP_Text testRefernce = flashObject.GetComponent<TMP_Text>();
-        testRefernce.text = interactText.Text;
+        // set position + text
+        flashObject.GetComponent<RectTransform>().anchoredPosition += new Vector2(0, tranformIncrement * Helper.GetFlashObjects());
+        flashObject.GetComponent<TMP_Text>().text = interactText.Text;
 
         if (time == 0) time = interactText.TimeOnScreen;
         yield return new WaitForSeconds(time);
 
-        testRefernce.text = "";
-        flashObject.SetActive(false);
         Destroy(flashObject);
-        objects--;
+        Helper.DecObjects();
     }
 
-    // manually turn on and off
+    // MANUAL
     public void EnableText(InteractText interactText) {
-        SetText(interactText.Text);
+        Helper.SetText(interactText.Text);
         setInteractObject.SetActive(true);
     }
 
     public void DisableText() {
         setInteractObject.SetActive(false);
-        ResetText();
-    }
-
-    public void DecrementFlashObjects() {
-        if (flashObjects > -1) flashObjects--;
-    }
-
-    void SetText(string interactText) {
-        setInteractionText.text = interactText;
-    }
-
-    void ResetText() {
-        setInteractionText.text = "";
+        Helper.SetText("");
     }
 
 
-
-    [SerializeField] GameObject holdBarObject;
-    [SerializeField] GameObject greenRange;
-    [SerializeField] GameObject holdRange;
-    // holding =====================================
-    // TODO: toggle?
-    public void ShowHoldBar(float min, float max) {
-        // TODO: make this not affect not needed variables
-        greenRange.GetComponent<RectTransform>().anchoredPosition = new Vector2(min, 0);
-        greenRange.GetComponent<RectTransform>().sizeDelta = new Vector2(max, greenRange.GetComponent<RectTransform>().sizeDelta.y);
-        holdRange.GetComponent<RectTransform>().sizeDelta = new Vector2(0, holdRange.GetComponent<RectTransform>().sizeDelta.y);
+    // HOLD BAR ==============================================================================
+    public void ShowHoldBar(float min, float width) {
+        Helper.SetBarPosition(Type.Green, min);
+        Helper.SetBarWidth(Type.Green, width);
 
         holdBarObject.SetActive(true);
     }
 
     public void HideHoldBar() {
-        greenRange.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        greenRange.GetComponent<RectTransform>().sizeDelta = new Vector2(0, greenRange.GetComponent<RectTransform>().sizeDelta.y);
-        holdRange.GetComponent<RectTransform>().sizeDelta = new Vector2(0, holdRange.GetComponent<RectTransform>().sizeDelta.y);
+        Helper.SetBarPosition(Type.Green, 0, 0);
+        Helper.SetBarWidth(Type.Green, 0);
+        Helper.SetBarWidth(Type.Hold, 0);
 
         holdBarObject.SetActive(false);
     }
 
     public void UpdateHoldBar(float holdValue) {
-        holdRange.GetComponent<RectTransform>().sizeDelta = new Vector2(holdValue, holdRange.GetComponent<RectTransform>().sizeDelta.y);
+        Helper.SetBarWidth(Type.Hold, holdValue);
     }
 
 }

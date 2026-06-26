@@ -359,8 +359,10 @@ MonoBehaviour:
   interactText: {fileID: 11400000, guid: f6cd542c379eaa8438f5dab7e1d4de85, type: 2}
   neededInteractionType: 0
   hasInteracted: 0
-  holdTimer: 1
-  endedEarly: {fileID: 11400000, guid: 5fbdc982dfdaf3840b0c62bb70a07a7c, type: 2}
+  UIscale: 400
+  minHold: 1.4
+  maxHold: 0.215
+  endedWrong: {fileID: 11400000, guid: 5fbdc982dfdaf3840b0c62bb70a07a7c, type: 2}
   ended: {fileID: 11400000, guid: 166354e5f0c06ef489cce5941b608918, type: 2}
 --- !u!1 &266624158
 GameObject:
@@ -632,6 +634,9 @@ MonoBehaviour:
   setInteractionText: {fileID: 1597430882}
   flashInteractObject: {fileID: 1069215089}
   tranformIncrement: 50
+  holdBarObject: {fileID: 1065220019}
+  greenRange: {fileID: 977830603}
+  holdRange: {fileID: 804658278}
 --- !u!1 &804658278
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,12 +951,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1065220020}
   m_Layer: 0
-  m_Name: Hold
+  m_Name: Hold Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1065220020
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1250,6 +1255,7 @@ GameObject:
   - component: {fileID: 1405026005}
   - component: {fileID: 1405026007}
   - component: {fileID: 1405026006}
+  - component: {fileID: 1405026008}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -1316,6 +1322,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405026004}
   m_CullTransparentMesh: 1
+--- !u!114 &1405026008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405026004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Mask
+  m_ShowMaskGraphic: 1
 --- !u!1 &1429457205
 GameObject:
   m_ObjectHideFlags: 0
