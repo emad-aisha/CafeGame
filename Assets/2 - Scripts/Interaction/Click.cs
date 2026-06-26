@@ -11,7 +11,6 @@ public class Click : NeededType, IInteractable {
         if (neededInteractionType != _interactionType) return;
         StartCoroutine(MenuManager.instance.FlashInteract(interactText));
         hasInteracted = true;
-        Debug.Log("Click");
     }
 
     public bool Escape() { return !hasInteracted; }

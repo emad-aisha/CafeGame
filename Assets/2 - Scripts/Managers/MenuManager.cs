@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+// TODO: change into seperate managers?
 public class MenuManager : MonoBehaviour {
     enum Type { Set, Flash };
     public static MenuManager instance;
@@ -30,8 +31,10 @@ public class MenuManager : MonoBehaviour {
         if (objects == 0) { DecrementFlashObjects(); }
     }
 
+    // interact text =====================================
     // flash on screen
-    public IEnumerator FlashInteract(InteractText interactText) {
+    // TODO: clean this up
+    public IEnumerator FlashInteract(InteractText interactText, float time = 0f) {
         flashObjects++;
         GameObject flashObject = Instantiate(flashInteractObject);
         flashObject.transform.SetParent(canvasParent);
@@ -46,7 +49,8 @@ public class MenuManager : MonoBehaviour {
         TMP_Text testRefernce = flashObject.GetComponent<TMP_Text>();
         testRefernce.text = interactText.Text;
 
-        yield return new WaitForSeconds(interactText.TimeOnScreen);
+        if (time == 0) time = interactText.TimeOnScreen;
+        yield return new WaitForSeconds(time);
 
         testRefernce.text = "";
         flashObject.SetActive(false);
@@ -77,5 +81,32 @@ public class MenuManager : MonoBehaviour {
         setInteractionText.text = "";
     }
 
+
+
+    [SerializeField] GameObject holdBarObject;
+    [SerializeField] GameObject greenRange;
+    [SerializeField] GameObject holdRange;
+    // holding =====================================
+    // TODO: toggle?
+    public void ShowHoldBar(float min, float max) {
+        // TODO: make this not affect not needed variables
+        greenRange.GetComponent<RectTransform>().anchoredPosition = new Vector2(min, 0);
+        greenRange.GetComponent<RectTransform>().sizeDelta = new Vector2(max - min, 50);
+        holdRange.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+
+        holdBarObject.SetActive(true);
+    }
+
+    public void HideHoldBar() {
+        greenRange.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        greenRange.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 50);
+        holdRange.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+
+        holdBarObject.SetActive(false);
+    }
+
+    public void UpdateHoldBar(float holdValue) {
+        holdRange.GetComponent<RectTransform>().sizeDelta = new Vector2(holdValue, 50);
+    }
 
 }
