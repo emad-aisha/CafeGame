@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d6bdf53bee53e4f8534295a6bb400c, type: 3}
   m_Name: Toggle OFF
   m_EditorClassIdentifier: Assembly-CSharp::InteractText
-  text: Clicked!
-  timeOnScreen: 0.25
+  text: Toggle Off
+  timeOnScreen: 0.5

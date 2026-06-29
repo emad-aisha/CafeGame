@@ -19,6 +19,7 @@ public class Toggle : NeededType, IInteractable {
         if (hasInteracted) {
             if (toggle) {
                 internalTimer += Time.deltaTime;
+                Debug.Log("timer: " + internalTimer);
             }
             else {
                 if (internalTimer < minToggleTimer) {
