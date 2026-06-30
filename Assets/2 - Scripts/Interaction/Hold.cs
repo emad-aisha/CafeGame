@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Hold : NeededType, IInteractable {
+public class Hold : Interacter {
     [SerializeField, Range(200, 400)] float UIscale;
 
     [SerializeField, Range(1.2f, 1.8f)] float minHold;
@@ -40,7 +40,7 @@ public class Hold : NeededType, IInteractable {
 
     }
 
-    public void Interact(InteractionType _interactionType) {
+    override public void Interact(InteractionType _interactionType) {
         if (!InteractTypeCheck(_interactionType)) return;
         MenuManager.instance.EnableText(interactText);
         MenuManager.instance.ShowHoldBar(minHold * UIscale, maxHold * UIscale);
@@ -49,7 +49,7 @@ public class Hold : NeededType, IInteractable {
         holdAction = InputManager.instance.GetAction("Interaction", interactType.ToString());
     }
 
-    public bool Escape() { return !hasInteracted || holdAction == null; }
+    override public bool Escape() { return !hasInteracted || holdAction == null; }
 
     void HoldLogic() {
         if (holdAction.IsPressed()) { isHeld = true; }

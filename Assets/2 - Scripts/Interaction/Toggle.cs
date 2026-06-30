@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Toggle : NeededType, IInteractable {
+public class Toggle : Interacter {
     [SerializeField] InteractText toggleOn;
     [SerializeField] InteractText toggleOff;
     [SerializeField] InteractText finalResult;
@@ -40,7 +40,7 @@ public class Toggle : NeededType, IInteractable {
         }
     }
 
-    public void Interact(InteractionType _interactionType) {
+    override public void Interact(InteractionType _interactionType) {
         if (!InteractTypeCheck(_interactionType)) return;
         hasInteracted = true;
         toggle = !toggle;
@@ -48,7 +48,7 @@ public class Toggle : NeededType, IInteractable {
         else StartCoroutine(MenuManager.instance.FlashInteract(toggleOff));
     }
 
-    public bool Escape() { return true; }
+    override public bool Escape() { return true; }
 
 
 }

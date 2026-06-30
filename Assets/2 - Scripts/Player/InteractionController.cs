@@ -46,9 +46,17 @@ public class InteractionController : InputSystems {
         bool hitInteractable = Physics.Raycast(GameManager.instance.mainCamera.transform.position, GameManager.instance.mainCamera.transform.forward,
             out hit, distance, ~ignoreLayer);
 
+        // TODO: implement
+        //  Pickup if click was pressed
+        //  Interact is e/f was pressed (depeneds on the interact item)
+        //  ETC....
+
         if (hitInteractable) {
-            IInteractable interaction = hit.collider.GetComponent<IInteractable>();
-            if (interaction != null) { interaction.Interact(GetInputActionType()); }
+            Pickup pickup = hit.collider.GetComponent<Pickup>();
+            Interacter interaction = hit.collider.GetComponent<Interacter>();
+
+            if (IsPickup() && pickup != null) { pickup.test(); }
+            else if (interaction != null) { interaction.Interact(GetInputActionType()); }
         }
     }
 
@@ -64,6 +72,11 @@ public class InteractionController : InputSystems {
             if (interactActions[i].WasPressedThisFrame()) return (InteractionType)i;
         }
         return InteractionType.Count;
+    }
+
+    // CHECKERS
+    bool IsPickup() {
+        return GetInputActionType() == InteractionType.LeftClick || GetInputActionType() == InteractionType.RightClick;
     }
 
 

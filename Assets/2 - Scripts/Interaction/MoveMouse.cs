@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MoveMouse : NeededType, IInteractable {
+public class MoveMouse : Interacter {
     [SerializeField] float moveTimer;
     float internalTimer;
 
@@ -36,7 +36,7 @@ public class MoveMouse : NeededType, IInteractable {
 
     }
 
-    public void Interact(InteractionType _interactionType) {
+    override public void Interact(InteractionType _interactionType) {
         if (!InteractTypeCheck(_interactionType)) return;
         MenuManager.instance.EnableText(interactText);
         Debug.Log("Move Start");
@@ -48,7 +48,7 @@ public class MoveMouse : NeededType, IInteractable {
         isHeld = true;
     }
 
-    public bool Escape() { return !hasInteracted || moveAction == null; }
+    override public bool Escape() { return !hasInteracted || moveAction == null; }
 
     bool IsMoving() {
         moveVector = moveAction.ReadValue<Vector2>();

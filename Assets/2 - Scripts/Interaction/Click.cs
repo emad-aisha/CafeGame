@@ -1,17 +1,17 @@
 using UnityEngine;
 
-public class Click : NeededType, IInteractable {
+public class Click : Interacter {
 
     void Update() {
         if (Escape()) return;
         hasInteracted = false;
     }
 
-    public void Interact(InteractionType _interactionType) {
+    override public void Interact(InteractionType _interactionType) {
         if (!InteractTypeCheck(_interactionType)) return;
         StartCoroutine(MenuManager.instance.FlashInteract(interactText));
         hasInteracted = true;
     }
 
-    public bool Escape() { return !hasInteracted; }
+    override public bool Escape() { return !hasInteracted; }
 }
