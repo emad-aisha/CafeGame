@@ -18,7 +18,7 @@ public class Wait : NeededType, IInteractable {
     }
 
     public void Interact(InteractionType _interactionType) {
-        if (neededInteractionType != _interactionType || hasInteracted) return;
+        if (!InteractTypeCheck(_interactionType)) return;
         StartCoroutine(MenuManager.instance.FlashInteract(interactText));
         Debug.Log("Started Waiting");
         hasInteracted = true;

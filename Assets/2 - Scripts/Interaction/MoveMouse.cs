@@ -37,7 +37,7 @@ public class MoveMouse : NeededType, IInteractable {
     }
 
     public void Interact(InteractionType _interactionType) {
-        if (neededInteractionType != _interactionType) return;
+        if (!InteractTypeCheck(_interactionType)) return;
         MenuManager.instance.EnableText(interactText);
         Debug.Log("Move Start");
         hasInteracted = true;

@@ -41,7 +41,7 @@ public class Toggle : NeededType, IInteractable {
     }
 
     public void Interact(InteractionType _interactionType) {
-        if (neededInteractionType != _interactionType) return;
+        if (!InteractTypeCheck(_interactionType)) return;
         hasInteracted = true;
         toggle = !toggle;
         if (toggle) StartCoroutine(MenuManager.instance.FlashInteract(toggleOn));

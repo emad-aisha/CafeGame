@@ -41,12 +41,12 @@ public class Hold : NeededType, IInteractable {
     }
 
     public void Interact(InteractionType _interactionType) {
-        if (neededInteractionType != _interactionType) return;
+        if (!InteractTypeCheck(_interactionType)) return;
         MenuManager.instance.EnableText(interactText);
         MenuManager.instance.ShowHoldBar(minHold * UIscale, maxHold * UIscale);
         hasInteracted = true;
         isHeld = true;
-        holdAction = InputManager.instance.GetAction("Interaction", neededInteractionType.ToString());
+        holdAction = InputManager.instance.GetAction("Interaction", interactType.ToString());
     }
 
     public bool Escape() { return !hasInteracted || holdAction == null; }
