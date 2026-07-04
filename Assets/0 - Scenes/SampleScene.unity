@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hold
   interactText: {fileID: 11400000, guid: f6cd542c379eaa8438f5dab7e1d4de85, type: 2}
-  neededInteractionType: 0
+  interactType: 2
   hasInteracted: 0
   UIscale: 400
   minHold: 1.4
@@ -763,7 +763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggle
   interactText: {fileID: 0}
-  neededInteractionType: 0
+  interactType: 0
   hasInteracted: 0
   toggleOn: {fileID: 11400000, guid: 722a4c7ebad59f94b8835ae3f77cd5ad, type: 2}
   toggleOff: {fileID: 11400000, guid: fb9258e65931ba74790ce00e87222382, type: 2}
@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveMouse
   interactText: {fileID: 11400000, guid: 0f1fe301de9e47b4db2bb622baaf6442, type: 2}
-  neededInteractionType: 0
+  interactType: 0
   hasInteracted: 0
   moveTimer: 1
   shouldBeHeld: 0
@@ -1668,7 +1668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wait
   interactText: {fileID: 11400000, guid: dbf96d3010594b042abdc136c81ab0c1, type: 2}
-  neededInteractionType: 0
+  interactType: 0
   hasInteracted: 0
   waitTimer: 1
 --- !u!1 &1449340274
@@ -1872,7 +1872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveMouse
   interactText: {fileID: 11400000, guid: 7ecc2e7478b5216439314be094e0e7df, type: 2}
-  neededInteractionType: 0
+  interactType: 0
   hasInteracted: 0
   moveTimer: 1
   shouldBeHeld: 1
@@ -2453,7 +2453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interaction
   interactText: {fileID: 11400000, guid: 123518cff6a103041bd8556d005963a1, type: 2}
-  neededInteractionType: 0
+  interactType: 0
   hasInteracted: 0
 --- !u!1001 &2092357646098911501
 PrefabInstance:

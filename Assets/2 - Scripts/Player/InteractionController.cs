@@ -33,14 +33,14 @@ public class InteractionController : InputSystems {
         if (internalInteractTimer <= 0) {
             if (GetInputAction() == null) return;
             internalInteractTimer = interactTimer;
-            Interact();
+            Act();
         }
         else {
             internalInteractTimer -= Time.deltaTime;
         }
     }
 
-    void Interact() {
+    void Act() {
         RaycastHit hit;
 
         bool hitInteractable = Physics.Raycast(GameManager.instance.mainCamera.transform.position, GameManager.instance.mainCamera.transform.forward,
@@ -53,10 +53,10 @@ public class InteractionController : InputSystems {
 
         if (hitInteractable) {
             Pickup pickup = hit.collider.GetComponent<Pickup>();
-            Interacter interaction = hit.collider.GetComponent<Interacter>();
+            Interact interaction = hit.collider.GetComponent<Interact>();
 
             if (IsPickup() && pickup != null) { pickup.test(); }
-            else if (interaction != null) { interaction.Interact(GetInputActionType()); }
+            else if (interaction != null) { interaction.Act(GetInputActionType()); }
         }
     }
 

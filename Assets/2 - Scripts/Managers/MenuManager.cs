@@ -5,6 +5,7 @@ using UnityEngine;
 using static MenuManagerHelper;
 
 // TODO: change into seperate managers?
+// TODO: find a way to make only certain 
 public class MenuManager : MonoBehaviour {
     [HideInInspector]
     public static MenuManager instance;
@@ -23,6 +24,8 @@ public class MenuManager : MonoBehaviour {
     [SerializeField] GameObject greenRange;
     [SerializeField] GameObject holdRange;
 
+    MenuManager() { }
+
     void Awake() {
         if (instance == null) instance = this;
         SetHelper();
@@ -32,7 +35,6 @@ public class MenuManager : MonoBehaviour {
         Helper = new();
         Helper.SetHoldBarData(greenRange, holdRange);
         Helper.SetInteractData(setInteractObject);
-
     }
 
 

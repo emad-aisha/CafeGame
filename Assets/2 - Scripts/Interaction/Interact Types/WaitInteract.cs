@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class Wait : Interacter {
+public class WaitInteract : Interact {
     [SerializeField] float waitTimer;
-    float internalTimer;
 
     void Update() {
         if (Escape()) return;
@@ -17,12 +16,11 @@ public class Wait : Interacter {
         }
     }
 
-    override public void Interact(InteractionType _interactionType) {
+    override public void Act(InteractionType _interactionType) {
         if (!InteractTypeCheck(_interactionType)) return;
-        StartCoroutine(MenuManager.instance.FlashInteract(interactText));
+        StartCoroutine(MenuManager.instance.FlashInteract(popupText));
         Debug.Log("Started Waiting");
         hasInteracted = true;
     }
 
-    override public bool Escape() { return !hasInteracted; }
 }

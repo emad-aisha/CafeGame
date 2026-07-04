@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Toggle : Interacter {
+public class ToggleInteract : Interact {
     [SerializeField] InteractText toggleOn;
     [SerializeField] InteractText toggleOff;
     [SerializeField] InteractText finalResult;
@@ -9,7 +9,6 @@ public class Toggle : Interacter {
 
     [SerializeField] float minToggleTimer;
     [SerializeField] float maxToggleTimer;
-    float internalTimer;
 
     // TODO: right now it ends at the time
     //          change to make specific
@@ -40,15 +39,13 @@ public class Toggle : Interacter {
         }
     }
 
-    override public void Interact(InteractionType _interactionType) {
+    override public void Act(InteractionType _interactionType) {
         if (!InteractTypeCheck(_interactionType)) return;
         hasInteracted = true;
         toggle = !toggle;
         if (toggle) StartCoroutine(MenuManager.instance.FlashInteract(toggleOn));
         else StartCoroutine(MenuManager.instance.FlashInteract(toggleOff));
     }
-
-    override public bool Escape() { return true; }
 
 
 }

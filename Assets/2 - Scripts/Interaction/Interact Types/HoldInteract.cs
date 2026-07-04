@@ -1,18 +1,12 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class Hold : Interacter {
+public class HoldInteract : Interact {
     [SerializeField, Range(200, 400)] float UIscale;
 
     [SerializeField, Range(1.2f, 1.8f)] float minHold;
     [SerializeField, Range(0, 0.5f)] float maxHold;
 
-    [SerializeField] InteractText endedWrong;
-    [SerializeField] InteractText ended;
 
-    InputAction holdAction;
-    float internalTimer;
-    bool isHeld;
 
     void Update() {
         if (Escape()) return;
@@ -24,14 +18,14 @@ public class Hold : Interacter {
             MenuManager.instance.UpdateHoldBar(internalTimer * UIscale);
         }
         else {
-            if (internalTimer < minHold) { // early
-                StartCoroutine(MenuManager.instance.FlashInteract(endedWrong));
+            if (internalTimer < minHold) {
+                StartCoroutine(MenuManager.instance.FlashInteract(doneEarly));
             }
-            else if (internalTimer > maxHold + minHold) { // late
-                StartCoroutine(MenuManager.instance.FlashInteract(endedWrong));
+            else if (internalTimer > maxHold + minHold) {
+                StartCoroutine(MenuManager.instance.FlashInteract(doneLate));
             }
-            else { // just right
-                StartCoroutine(MenuManager.instance.FlashInteract(ended));
+            else {
+                StartCoroutine(MenuManager.instance.FlashInteract(doneCorrect));
             }
 
             ResetData();
@@ -40,21 +34,16 @@ public class Hold : Interacter {
 
     }
 
-    override public void Interact(InteractionType _interactionType) {
+    override public void Act(InteractionType _interactionType) {
         if (!InteractTypeCheck(_interactionType)) return;
-        MenuManager.instance.EnableText(interactText);
+        MenuManager.instance.EnableText(popupText);
         MenuManager.instance.ShowHoldBar(minHold * UIscale, maxHold * UIscale);
         hasInteracted = true;
         isHeld = true;
         holdAction = InputManager.instance.GetAction("Interaction", interactType.ToString());
     }
 
-    override public bool Escape() { return !hasInteracted || holdAction == null; }
-
-    void HoldLogic() {
-        if (holdAction.IsPressed()) { isHeld = true; }
-        else { isHeld = false; }
-    }
+    override protected bool Escape() { return !hasInteracted || holdAction == null; }
 
     void ResetData() {
         MenuManager.instance.DisableText();
