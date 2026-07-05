@@ -41,7 +41,7 @@ public abstract class Interact : MonoBehaviour {
     }
 
     // CHECKS ========================================================================
-    protected enum Timing { Early, Late, Done, NotDone, Null };
+    protected enum Timing { Early, Late, Done, NotDone, Wrong, Null };
     // TODO: rename?
     // check determines what increments the timer ("isHeld" for example)
     virtual protected Timing IncrementTimer(bool check) {
