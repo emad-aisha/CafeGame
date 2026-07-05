@@ -356,15 +356,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58a571bcaea19c43aa4c8bee052bed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoldInteract
-  popupText: 
-  popupTime: 0
-  doneEarly: 
-  doneLate: 
-  doneCorrect: 
+  UIScale: 200
+  popupText: holding
+  popupTime: 0.5
+  doneEarly: early
+  doneLate: late
+  doneCorrect: done
   interactType: 0
-  minWaitTimer: 0
-  maxWaitTimer: 0
-  UIscale: 200
+  minWaitTimer: 1
+  maxWaitTimer: 1.5
 --- !u!1 &266624158
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,19 +760,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 476264610}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b68f5c8938bbd7e4db6fbfc171862eca, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d0e1f443d5114a47932837f81d19ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggle
-  interactText: {fileID: 0}
+  UIScale: 10
+  popupText: toggle start
+  popupTime: 0.5
+  doneEarly: toggle done early
+  doneLate: toggle done late
+  doneCorrect: toggle done right
   interactType: 0
-  hasInteracted: 0
-  toggleOn: {fileID: 11400000, guid: 722a4c7ebad59f94b8835ae3f77cd5ad, type: 2}
-  toggleOff: {fileID: 11400000, guid: fb9258e65931ba74790ce00e87222382, type: 2}
-  finalResult: {fileID: 11400000, guid: 29bb9d2140471054e8b35bbb05a45462, type: 2}
-  toggle: 0
-  minToggleTimer: 1
-  maxToggleTimer: 1.5
-  internalTimer: 0
+  minWaitTimer: 1
+  maxWaitTimer: 2
+  holdBarObject: {fileID: 1883145910}
+  greenRange: {fileID: 1827029775}
+  holdRange: {fileID: 1449340274}
 --- !u!1 &804658278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,7 +2266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1883145911
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2498,6 +2500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8702f0d20b03fc47b696ecfa3cd912a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interaction
+  UIScale: 0
   popupText: clicked
   popupTime: 0.5
   doneEarly: 

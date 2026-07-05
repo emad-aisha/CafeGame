@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 // TODO: make new interactText?
 public abstract class Interact : MonoBehaviour {
     [Header("UI Elements")]
-    [SerializeField, Range(200, 400)] protected float UIscale;
+    [SerializeField] protected float UIScale;
 
     [SerializeField] protected string popupText;
     [SerializeField] protected float popupTime;
@@ -30,11 +30,11 @@ public abstract class Interact : MonoBehaviour {
     // FUNCTIONS ========================================================================
     abstract public void Act(InteractionType _interactionType);
 
-    protected bool HoldingUpdate() {
+    protected bool HoldingUpdate(bool check) {
         if (Escape()) return false;
         HoldLogic(); // updates isHeld
 
-        Timing timing = IncrementTimer(isHeld);
+        Timing timing = IncrementTimer(check);
         UpdateBar();
         DoneUI(timing);
         return true;
@@ -58,14 +58,14 @@ public abstract class Interact : MonoBehaviour {
             else if (internalTimer > maxWaitTimer) returnValue = Timing.Late;
             else returnValue = Timing.Done;
 
-            ResetData();
             return returnValue;
         }
     }
 
     virtual protected void HoldLogic() {
-        if (holdAction.IsPressed()) { isHeld = true; }
-        else { isHeld = false; }
+        if (holdAction == null) isHeld = false;
+        else if (holdAction.IsPressed()) isHeld = true;
+        else isHeld = false;
     }
 
     virtual protected bool Escape() {
@@ -77,8 +77,21 @@ public abstract class Interact : MonoBehaviour {
     }
 
     // UI ========================================================================
+    // TODO: do some conversion to fix how the bar gets updated
+    // double check this lol
+    virtual protected void StartUI() {
+        StartCoroutine(MenuManager.instance.FlashInteract(popupText, popupTime));
+    }
+
+    virtual protected void UpdateBar() {
+        MenuManager.instance.UpdateHoldBar(internalTimer * UIScale);
+    }
+
     virtual protected void DoneUI(Timing timing) {
-        if (timing == Timing.Early || timing == Timing.Late || timing == Timing.Done) MenuManager.instance.HideHoldBar();
+        if (timing == Timing.Early || timing == Timing.Late || timing == Timing.Done) {
+            ResetData();
+            MenuManager.instance.HideHoldBar();
+        }
 
         switch (timing) {
             case Timing.Early: StartCoroutine(MenuManager.instance.FlashInteract(doneEarly, popupTime)); break;
@@ -86,15 +99,6 @@ public abstract class Interact : MonoBehaviour {
             case Timing.Done: StartCoroutine(MenuManager.instance.FlashInteract(doneCorrect, popupTime)); break;
             default: break;
         }
-    }
-
-    // TODO: do some conversion to fix how the bar gets updated
-    virtual protected void StartUI() {
-        StartCoroutine(MenuManager.instance.FlashInteract(popupText, popupTime));
-    }
-
-    virtual protected void UpdateBar() {
-        MenuManager.instance.UpdateHoldBar(internalTimer * UIscale);
     }
 
     // MISC ========================================================================

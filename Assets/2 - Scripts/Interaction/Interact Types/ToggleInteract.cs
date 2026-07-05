@@ -1,51 +1,62 @@
 using UnityEngine;
+using static MenuManagerHelper;
 
 public class ToggleInteract : Interact {
-    [SerializeField] string toggleOn;
-    [SerializeField] string toggleOff;
-    [SerializeField] string finalResult;
-
+    MenuManagerHelper helper;
+    [SerializeField] GameObject holdBarObject;
+    [SerializeField] GameObject greenRange;
+    [SerializeField] GameObject holdRange;
     bool toggle;
-
-    [SerializeField] float minToggleTimer;
-    [SerializeField] float maxToggleTimer;
 
     // TODO: right now it ends at the time
     //          change to make specific
+    void Start() {
+        helper = new();
+        helper.SetHoldBarData(greenRange, holdRange);
+    }
 
     // TODO: make better lmao
     public void Update() {
-        if (hasInteracted) {
-            if (toggle) {
-                internalTimer += Time.deltaTime;
-                Debug.Log("timer: " + internalTimer);
-            }
-            else {
-                if (internalTimer < minToggleTimer) {
-                    Debug.Log("too little");
-                }
-                else if (internalTimer > maxToggleTimer) {
-                    Debug.Log("too much");
-                }
-                else { // perfect
-                    StartCoroutine(MenuManager.instance.FlashInteract(finalResult, popupTime));
-                }
-                hasInteracted = false;
-                internalTimer = 0;
-            }
-        }
-        else {
-
-        }
+        HoldingUpdate(toggle);
     }
 
     override public void Act(InteractionType _interactionType) {
         if (!InteractTypeCheck(_interactionType)) return;
         hasInteracted = true;
         toggle = !toggle;
-        if (toggle) StartCoroutine(MenuManager.instance.FlashInteract(toggleOn, 0.5f));
-        else StartCoroutine(MenuManager.instance.FlashInteract(toggleOff, 0.5f));
+        if (toggle) StartUI();
     }
 
+    // UI ========================================================================
+    protected override void StartUI() {
+        base.StartUI();
+
+        helper.SetBarPosition(Type.Green, minWaitTimer * UIScale);
+        helper.SetBarWidth(Type.Green, maxWaitTimer * UIScale);
+
+        holdBarObject.SetActive(true);
+    }
+
+    override protected void UpdateBar() {
+        helper.SetBarWidth(Type.Hold, internalTimer * UIScale);
+    }
+
+    override protected void DoneUI(Timing timing) {
+        if (timing == Timing.Early || timing == Timing.Late || timing == Timing.Done) {
+            ResetData();
+            helper.SetBarPosition(Type.Green, 0, 0);
+            helper.SetBarWidth(Type.Green, 0);
+            helper.SetBarWidth(Type.Hold, 0);
+
+            holdBarObject.SetActive(false);
+        }
+
+        switch (timing) {
+            case Timing.Early: StartCoroutine(MenuManager.instance.FlashInteract(doneEarly, popupTime)); break;
+            case Timing.Late: StartCoroutine(MenuManager.instance.FlashInteract(doneLate, popupTime)); break;
+            case Timing.Done: StartCoroutine(MenuManager.instance.FlashInteract(doneCorrect, popupTime)); break;
+            default: break;
+        }
+    }
 
 }
