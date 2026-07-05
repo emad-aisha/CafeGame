@@ -353,17 +353,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 232388581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1df981277e741bc49b2dd6fdb7bdde18, type: 3}
+  m_Script: {fileID: 11500000, guid: b58a571bcaea19c43aa4c8bee052bed0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hold
-  interactText: {fileID: 11400000, guid: f6cd542c379eaa8438f5dab7e1d4de85, type: 2}
-  interactType: 2
-  hasInteracted: 0
-  UIscale: 400
-  minHold: 1.4
-  maxHold: 0.215
-  endedWrong: {fileID: 11400000, guid: 5fbdc982dfdaf3840b0c62bb70a07a7c, type: 2}
-  ended: {fileID: 11400000, guid: 166354e5f0c06ef489cce5941b608918, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::HoldInteract
+  popupText: 
+  popupTime: 0
+  doneEarly: 
+  doneLate: 
+  doneCorrect: 
+  interactType: 0
+  minWaitTimer: 0
+  maxWaitTimer: 0
+  UIscale: 200
 --- !u!1 &266624158
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,8 +769,10 @@ MonoBehaviour:
   toggleOn: {fileID: 11400000, guid: 722a4c7ebad59f94b8835ae3f77cd5ad, type: 2}
   toggleOff: {fileID: 11400000, guid: fb9258e65931ba74790ce00e87222382, type: 2}
   finalResult: {fileID: 11400000, guid: 29bb9d2140471054e8b35bbb05a45462, type: 2}
+  toggle: 0
   minToggleTimer: 1
   maxToggleTimer: 1.5
+  internalTimer: 0
 --- !u!1 &804658278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,7 +1379,28 @@ MonoBehaviour:
   interactType: 0
   hasInteracted: 0
   moveTimer: 1
+  internalTimer: 0
   shouldBeHeld: 0
+  moveAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4a398046-2096-40f2-8dfc-7de4038a36cf
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  moveVector: {x: 0, y: 0}
+  holdAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3a956d79-b748-4ca4-ba06-e14adf4e0785
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  isHeld: 0
 --- !u!1 &1090327362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,6 +1695,7 @@ MonoBehaviour:
   interactType: 0
   hasInteracted: 0
   waitTimer: 1
+  internalTimer: 0
 --- !u!1 &1449340274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1875,7 +1900,28 @@ MonoBehaviour:
   interactType: 0
   hasInteracted: 0
   moveTimer: 1
+  internalTimer: 0
   shouldBeHeld: 1
+  moveAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8e48b802-ccb1-46e2-9a5c-4b78d6de1bf7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  moveVector: {x: 0, y: 0}
+  holdAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1688ecc5-26ad-4331-ae3b-6755c7a6f1bc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  isHeld: 0
 --- !u!1 &1597430880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2449,12 +2495,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2023052156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edd6494f9075ae74c895cb2c0edfd885, type: 3}
+  m_Script: {fileID: 11500000, guid: f8702f0d20b03fc47b696ecfa3cd912a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interaction
-  interactText: {fileID: 11400000, guid: 123518cff6a103041bd8556d005963a1, type: 2}
+  popupText: clicked
+  popupTime: 0.5
+  doneEarly: 
+  doneLate: 
+  doneCorrect: 
   interactType: 0
-  hasInteracted: 0
+  minWaitTimer: 0
+  maxWaitTimer: 0
 --- !u!1001 &2092357646098911501
 PrefabInstance:
   m_ObjectHideFlags: 0

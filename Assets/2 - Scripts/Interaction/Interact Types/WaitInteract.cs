@@ -18,7 +18,7 @@ public class WaitInteract : Interact {
 
     override public void Act(InteractionType _interactionType) {
         if (!InteractTypeCheck(_interactionType)) return;
-        StartCoroutine(MenuManager.instance.FlashInteract(popupText));
+        StartCoroutine(MenuManager.instance.FlashInteract(popupText, popupTime));
         Debug.Log("Started Waiting");
         hasInteracted = true;
     }

@@ -44,7 +44,7 @@ public class MenuManager : MonoBehaviour {
 
     // INTERACT POPUP ========================================================================
     // FLASH
-    public IEnumerator FlashInteract(InteractText interactText, float time = 0f) {
+    public IEnumerator FlashInteract(string interactText, float time) {
         Helper.IncFlashObjects();
         Helper.IncObjects();
         GameObject flashObject = Instantiate(flashInteractObject, canvasParent);
@@ -52,9 +52,8 @@ public class MenuManager : MonoBehaviour {
 
         // set position + text
         flashObject.GetComponent<RectTransform>().anchoredPosition += new Vector2(0, tranformIncrement * Helper.GetFlashObjects());
-        flashObject.GetComponent<TMP_Text>().text = interactText.Text;
+        flashObject.GetComponent<TMP_Text>().text = interactText;
 
-        if (time == 0) time = interactText.TimeOnScreen;
         yield return new WaitForSeconds(time);
 
         Destroy(flashObject);
@@ -62,8 +61,8 @@ public class MenuManager : MonoBehaviour {
     }
 
     // MANUAL
-    public void EnableText(InteractText interactText) {
-        Helper.SetText(interactText.Text);
+    public void EnableText(string interactText) {
+        Helper.SetText(interactText);
         setInteractObject.SetActive(true);
     }
 

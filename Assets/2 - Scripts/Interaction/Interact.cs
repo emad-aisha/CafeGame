@@ -2,19 +2,24 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 // TODO: re-organize this + children
+// TODO: update inspector for EACH child
+// TODO: make new interactText?
 public abstract class Interact : MonoBehaviour {
     [Header("UI Elements")]
-    [SerializeField] protected InteractText popupText;
+    [SerializeField, Range(200, 400)] protected float UIscale;
+
+    [SerializeField] protected string popupText;
     [SerializeField] protected float popupTime;
 
-    [SerializeField] protected InteractText doneEarly;
-    [SerializeField] protected InteractText doneLate;
-    [SerializeField] protected InteractText doneCorrect;
+    [SerializeField] protected string doneEarly;
+    [SerializeField] protected string doneLate;
+    [SerializeField] protected string doneCorrect;
 
     [Header("Interaction")]
     [SerializeField] protected InteractionType interactType; // TODO: make sure this only has certain types ^ do in a custom editor
 
-    [SerializeField] protected float waitTimer;
+    [SerializeField] protected float minWaitTimer;
+    [SerializeField] protected float maxWaitTimer;
     protected float internalTimer;
 
     // internal interaction
@@ -25,25 +30,36 @@ public abstract class Interact : MonoBehaviour {
     // FUNCTIONS ========================================================================
     abstract public void Act(InteractionType _interactionType);
 
-    void Update() {
-        if (Escape()) return;
-        IncrementTimer();
+    protected bool HoldingUpdate() {
+        if (Escape()) return false;
+        HoldLogic(); // updates isHeld
+
+        Timing timing = IncrementTimer(isHeld);
         UpdateBar();
+        DoneUI(timing);
+        return true;
     }
 
     // CHECKS ========================================================================
+    protected enum Timing { Early, Late, Done, NotDone, Null };
     // TODO: rename?
-    virtual protected bool IncrementTimer() {
-        if (!hasInteracted) return false;
+    // check determines what increments the timer ("isHeld" for example)
+    virtual protected Timing IncrementTimer(bool check) {
+        if (!hasInteracted) return Timing.Null;
 
-        if (internalTimer < waitTimer) {
+        // increments timer
+        if (check) {
             internalTimer += Time.deltaTime;
-            return false;
+            return Timing.NotDone;
         }
         else {
-            internalTimer = 0;
-            hasInteracted = false;
-            return true;
+            Timing returnValue;
+            if (internalTimer < minWaitTimer) returnValue = Timing.Early;
+            else if (internalTimer > maxWaitTimer) returnValue = Timing.Late;
+            else returnValue = Timing.Done;
+
+            ResetData();
+            return returnValue;
         }
     }
 
@@ -61,13 +77,34 @@ public abstract class Interact : MonoBehaviour {
     }
 
     // UI ========================================================================
+    virtual protected void DoneUI(Timing timing) {
+        if (timing == Timing.Early || timing == Timing.Late || timing == Timing.Done) MenuManager.instance.HideHoldBar();
+
+        switch (timing) {
+            case Timing.Early: StartCoroutine(MenuManager.instance.FlashInteract(doneEarly, popupTime)); break;
+            case Timing.Late: StartCoroutine(MenuManager.instance.FlashInteract(doneLate, popupTime)); break;
+            case Timing.Done: StartCoroutine(MenuManager.instance.FlashInteract(doneCorrect, popupTime)); break;
+            default: break;
+        }
+    }
+
     // TODO: do some conversion to fix how the bar gets updated
     virtual protected void StartUI() {
         StartCoroutine(MenuManager.instance.FlashInteract(popupText, popupTime));
     }
 
     virtual protected void UpdateBar() {
-        MenuManager.instance.UpdateHoldBar(internalTimer);
+        MenuManager.instance.UpdateHoldBar(internalTimer * UIscale);
     }
+
+    // MISC ========================================================================
+    virtual protected void ResetData() {
+        internalTimer = 0;
+        hasInteracted = false;
+        isHeld = false;
+        holdAction = null;
+    }
+
+
 
 }

@@ -1,9 +1,9 @@
 using UnityEngine;
 
 public class ToggleInteract : Interact {
-    [SerializeField] InteractText toggleOn;
-    [SerializeField] InteractText toggleOff;
-    [SerializeField] InteractText finalResult;
+    [SerializeField] string toggleOn;
+    [SerializeField] string toggleOff;
+    [SerializeField] string finalResult;
 
     bool toggle;
 
@@ -28,7 +28,7 @@ public class ToggleInteract : Interact {
                     Debug.Log("too much");
                 }
                 else { // perfect
-                    StartCoroutine(MenuManager.instance.FlashInteract(finalResult));
+                    StartCoroutine(MenuManager.instance.FlashInteract(finalResult, popupTime));
                 }
                 hasInteracted = false;
                 internalTimer = 0;
@@ -43,8 +43,8 @@ public class ToggleInteract : Interact {
         if (!InteractTypeCheck(_interactionType)) return;
         hasInteracted = true;
         toggle = !toggle;
-        if (toggle) StartCoroutine(MenuManager.instance.FlashInteract(toggleOn));
-        else StartCoroutine(MenuManager.instance.FlashInteract(toggleOff));
+        if (toggle) StartCoroutine(MenuManager.instance.FlashInteract(toggleOn, 0.5f));
+        else StartCoroutine(MenuManager.instance.FlashInteract(toggleOff, 0.5f));
     }
 
 
