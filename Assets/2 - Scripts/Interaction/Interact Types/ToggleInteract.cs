@@ -44,7 +44,7 @@ public class ToggleInteract : Interact {
     override protected void DoneUI(Timing timing) {
         if (timing == Timing.Early || timing == Timing.Late || timing == Timing.Done) {
             ResetData();
-            helper.SetBarPosition(Type.Green, 0, 0);
+            helper.SetBarPosition(Type.Green, 0);
             helper.SetBarWidth(Type.Green, 0);
             helper.SetBarWidth(Type.Hold, 0);
 

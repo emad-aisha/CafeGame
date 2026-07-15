@@ -23,7 +23,7 @@ public class HoldInteract : Interact {
 
     override protected void StartUI() {
         MenuManager.instance.EnableText(popupText);
-        MenuManager.instance.ShowHoldBar(minWaitTimer * UIScale, maxWaitTimer * UIScale);
+        MenuManager.instance.ShowHoldBar(minWaitTimer * UIScale, maxWaitTimer);
     }
 
 }

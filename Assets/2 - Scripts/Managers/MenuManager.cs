@@ -81,7 +81,7 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void HideHoldBar() {
-        Helper.SetBarPosition(Type.Green, 0, 0);
+        Helper.SetBarPosition(Type.Green, 0);
         Helper.SetBarWidth(Type.Green, 0);
         Helper.SetBarWidth(Type.Hold, 0);
 

@@ -27,6 +27,8 @@ public abstract class Interact : MonoBehaviour {
     protected InputAction holdAction;
     protected bool isHeld;
 
+    protected const float maxValue = 3f;
+
     // FUNCTIONS ========================================================================
     abstract public void Act(InteractionType _interactionType);
 
@@ -84,7 +86,7 @@ public abstract class Interact : MonoBehaviour {
     }
 
     virtual protected void UpdateBar() {
-        MenuManager.instance.UpdateHoldBar(internalTimer * UIScale);
+        MenuManager.instance.UpdateHoldBar(internalTimer / maxValue);
     }
 
     virtual protected void DoneUI(Timing timing) {

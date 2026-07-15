@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuManagerHelper {
     // INTERACT =========================
@@ -9,6 +10,9 @@ public class MenuManagerHelper {
 
     // HOLD =============================
     public enum Type { Green, Hold };
+    Image greenImage;
+    Image holdImage;
+
     RectTransform greenTransform;
     RectTransform holdTransform;
 
@@ -23,6 +27,9 @@ public class MenuManagerHelper {
     public void SetHoldBarData(GameObject greenRange, GameObject holdRange) {
         greenTransform = greenRange.GetComponent<RectTransform>();
         holdTransform = holdRange.GetComponent<RectTransform>();
+
+        greenImage = greenRange.GetComponent<Image>();
+        holdImage = holdRange.GetComponent<Image>();
     }
 
 
@@ -40,17 +47,17 @@ public class MenuManagerHelper {
 
 
     // HOLD BAR ==============================================================================
-    public void SetBarPosition(Type type, float x, float y = 0) {
+    public void SetBarPosition(Type type, float x) {
         switch (type) {
-            case Type.Green: greenTransform.anchoredPosition = new Vector2(x, y); break;
-            case Type.Hold: holdTransform.anchoredPosition = new Vector2(x, y); break;
+            case Type.Green: greenTransform.anchoredPosition = new Vector2(x, 0); break;
+            case Type.Hold: holdTransform.anchoredPosition = new Vector2(x, 0); break;
         }
     }
 
     public void SetBarWidth(Type type, float value) {
         switch (type) {
-            case Type.Green: greenTransform.sizeDelta = new Vector2(value, greenTransform.sizeDelta.y); break;
-            case Type.Hold: holdTransform.sizeDelta = new Vector2(value, holdTransform.sizeDelta.y); break;
+            case Type.Green: greenImage.fillAmount = value; break;
+            case Type.Hold: holdImage.fillAmount = value; break;
         }
     }
 
