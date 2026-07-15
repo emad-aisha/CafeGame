@@ -17,7 +17,7 @@ public class MoveMouseInteract : Interact {
             if (inRange) hasInteracted = false;
         }
         else {
-            if ((needsHeld && inRange) || inRange) {
+            if ((needsHeld && inRange) || isForgiving) {
                 Debug.Log("Done");
                 GameManager.instance.StartCamera();
                 ResetInternalValue();

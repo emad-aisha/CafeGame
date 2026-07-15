@@ -10,7 +10,7 @@ public class ToggleInteract : Interact {
             inRange = internalValue >= minValue && internalValue <= maxValue;
         }
         else if (!hasInteracted) {
-            if (inRange) {
+            if (inRange || isForgiving) {
                 Debug.Log("Done");
             }
             else if (internalValue < minValue) {

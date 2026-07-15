@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public abstract class Interact : MonoBehaviour {
     [SerializeField] protected InteractionType interactType;
+    [SerializeField] protected bool isForgiving;
     [SerializeField] protected bool needsHeld;
     protected InputAction holdAction;
 

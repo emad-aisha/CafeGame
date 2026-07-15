@@ -13,7 +13,7 @@ public class HoldInteract : Interact {
             inRange = internalValue >= minValue && internalValue <= maxValue;
         }
         else {
-            if (!needsHeld || inRange) {
+            if (!needsHeld || inRange || isForgiving) {
                 Debug.Log("Done");
             }
             else if (internalValue < minValue) {
