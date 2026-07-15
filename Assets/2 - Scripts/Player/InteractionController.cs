@@ -47,8 +47,8 @@ public class InteractionController : InputSystems {
             out hit, distance, ~ignoreLayer);
 
         if (hitInteractable) {
-            IInteractable interaction = hit.collider.GetComponent<IInteractable>();
-            if (interaction != null) { interaction.Interact(GetInputActionType()); }
+            Interact interaction = hit.collider.GetComponent<Interact>();
+            if (interaction != null) { interaction.StartInteract(GetInputActionType()); }
         }
     }
 

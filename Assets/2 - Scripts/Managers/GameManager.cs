@@ -13,5 +13,12 @@ public class GameManager : MonoBehaviour {
         cameraController = mainCamera.GetComponent<CameraController>();
     }
 
+    public void StopCamera() {
+        cameraController.Disable();
+    }
+    public void StartCamera() {
+        cameraController.Enable();
+    }
+
 
 }
