@@ -8,10 +8,9 @@ public abstract class Interact : MonoBehaviour {
     protected InputAction holdAction;
 
     [Header("")]
-
-    [SerializeField] protected float minValue;
-    [SerializeField] protected float maxValue;
-    [SerializeField, Range(1, 2)] float updateScale = 1;
+    [SerializeField, Range(0, 1)] protected float minValue;
+    [SerializeField, Range(0, 1)] protected float maxValue;
+    [SerializeField, Range(0.1f, 1)] float updateScale = 0.5f; // TODO: maybe change into preset speeds for ease of use
     protected float internalValue;
 
     protected bool hasInteracted; // also double as an "isHeld" bool
@@ -19,18 +18,24 @@ public abstract class Interact : MonoBehaviour {
 
     // shared behavior
     public abstract void StartInteract(InteractionType interactedType);
+    protected void Begin() {
+        hasInteracted = true;
+        UpdateInternalValue();
+    }
 
     protected void UpdateInternalValue() {
         internalValue += Time.deltaTime * updateScale;
     }
-    protected void ResetInternalValue() {
+    protected void ResetInternalValues() {
+        hasInteracted = false;
+        inRange = false;
         internalValue = 0;
     }
 
     protected void ResetHoldingValue() {
         hasInteracted = false;
     }
-    protected void UpdateIsHolding() {
+    virtual protected void UpdateIsHolding() {
         if (holdAction != null) hasInteracted = holdAction.IsPressed();
         else hasInteracted = false;
     }
@@ -39,5 +44,11 @@ public abstract class Interact : MonoBehaviour {
         return hasInteracted;
     }
 
+    // sharing personalData;
+    public float GetInternalValue() { return internalValue; }
+    public float GetMinValue() { return minValue; }
+    public float GetMaxValue() { return maxValue; }
+
+    public bool GetHasInteracted() { return hasInteracted; }
 
 }

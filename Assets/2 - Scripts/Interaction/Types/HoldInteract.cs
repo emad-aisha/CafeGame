@@ -23,7 +23,7 @@ public class HoldInteract : Interact {
                 Debug.Log("Late");
             }
 
-            ResetInternalValue();
+            ResetInternalValues();
         }
 
     }
@@ -31,8 +31,11 @@ public class HoldInteract : Interact {
 
     public override void StartInteract(InteractionType interactedType) {
         if (interactType != interactedType) return;
-        hasInteracted = true;
+
+        // set data
         if (needsHeld) holdAction = InputManager.instance.GetAction("Interaction", interactType.ToString());
+
+        Begin();
         Debug.Log("start interact");
     }
 

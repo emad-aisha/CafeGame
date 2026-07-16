@@ -4,37 +4,43 @@ using UnityEngine.InputSystem;
 public class MoveMouseInteract : Interact {
     InputAction mouseAction;
 
+    void Start() {
+        isForgiving = true;
+    }
+
     void Update() {
         if (!hasInteracted && internalValue == 0) return;
 
-        if (hasInteracted) {
-            // update values
-            UpdateMovingMouse();
-            if (needsHeld) UpdateIsHolding();
+        // update values
+        if (needsHeld) UpdateIsHolding();
+        else UpdateMovingMouse();
 
+        if (hasInteracted) {
             UpdateInternalValue();
+            Debug.Log("update check" + hasInteracted);
+
             inRange = internalValue >= minValue && internalValue <= maxValue;
             if (inRange) hasInteracted = false;
+            Debug.Log("range check" + hasInteracted);
         }
-        else {
-            if ((needsHeld && inRange) || isForgiving) {
-                Debug.Log("Done");
-                GameManager.instance.StartCamera();
-                ResetInternalValue();
-                hasInteracted = false;
-            }
+        else if ((needsHeld && inRange) || inRange) {
+            Debug.Log("Done");
+            GameManager.instance.StartCamera();
+            ResetInternalValues();
         }
 
     }
 
 
+
     public override void StartInteract(InteractionType interactedType) {
         if (interactType != interactedType) return;
-        mouseAction = InputManager.instance.GetAction("Interaction", "MousePosition"); // mouse delta
-        holdAction = InputManager.instance.GetAction("Interaction", interactedType.ToString()); // mouse delta
-        hasInteracted = true;
-        GameManager.instance.StopCamera();
+        // set actions
+        mouseAction = InputManager.instance.GetAction("Interaction", "MouseMovement"); // mouse delta
+        if (needsHeld) holdAction = InputManager.instance.GetAction("Interaction", interactedType.ToString()); // mouse delta
 
+        Begin(); // to prevent bug
+        GameManager.instance.StopCamera();
         Debug.Log("start move mouse");
     }
 
@@ -42,5 +48,11 @@ public class MoveMouseInteract : Interact {
         if (mouseAction.ReadValue<Vector2>() != Vector2.zero) hasInteracted = true;
         else hasInteracted = false;
     }
+
+    override protected void UpdateIsHolding() {
+        if (mouseAction.ReadValue<Vector2>() != Vector2.zero && holdAction != null) hasInteracted = holdAction.IsPressed();
+        else hasInteracted = false;
+    }
+
 
 }

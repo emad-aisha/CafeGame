@@ -20,7 +20,7 @@ public class ToggleInteract : Interact {
                 Debug.Log("Late");
             }
 
-            ResetInternalValue();
+            ResetInternalValues();
         }
 
     }
