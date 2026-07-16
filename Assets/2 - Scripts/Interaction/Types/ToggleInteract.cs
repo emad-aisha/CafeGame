@@ -28,6 +28,7 @@ public class ToggleInteract : Interact {
 
     public override void StartInteract(InteractionType interactedType) {
         if (interactType != interactedType) return;
+        FlashUI();
         hasInteracted = !hasInteracted;
         Debug.Log("toggle interact");
     }

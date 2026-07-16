@@ -169,7 +169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1305610867332564268, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1305610867332564268, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
       propertyPath: m_LocalRotation.w
@@ -189,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1305610867332564268, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -3.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1305610867332564268, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -207,10 +207,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6710828313863066952, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
-      propertyPath: interactObject
-      value: 
-      objectReference: {fileID: 1071977708}
     - target: {fileID: 7842281569451753814, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
       propertyPath: m_Name
       value: HUD - Click UI
@@ -425,17 +421,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6710828313863066952, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
-      propertyPath: interactObject
-      value: 
-      objectReference: {fileID: 2074531542}
     - target: {fileID: 7842281569451753814, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
       propertyPath: m_Name
       value: HUD - Click UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 7842281569451753814, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -634,11 +622,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!20 &459222070 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 5222689259293488454, guid: 3f72dd01b269fff4491382dfe69d84f3, type: 3}
-  m_PrefabInstance: {fileID: 2092357646098911501}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &475034418
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,10 +679,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD - Hold Bar
       objectReference: {fileID: 0}
-    - target: {fileID: 5032463813725049222, guid: 81d55ac7d817a9443bb8c9d71f83c522, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5829987389651348839, guid: 81d55ac7d817a9443bb8c9d71f83c522, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -780,10 +759,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8812406949794267846, guid: 81d55ac7d817a9443bb8c9d71f83c522, type: 3}
-      propertyPath: interactObject
-      value: 
-      objectReference: {fileID: 1640779769}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -837,10 +812,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD - Hold Bar
       objectReference: {fileID: 0}
-    - target: {fileID: 5032463813725049222, guid: 81d55ac7d817a9443bb8c9d71f83c522, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5829987389651348839, guid: 81d55ac7d817a9443bb8c9d71f83c522, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -921,10 +892,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8812406949794267846, guid: 81d55ac7d817a9443bb8c9d71f83c522, type: 3}
-      propertyPath: interactObject
-      value: 
-      objectReference: {fileID: 1071977708}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1179,17 +1146,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6710828313863066952, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
-      propertyPath: interactObject
-      value: 
-      objectReference: {fileID: 2011495968}
     - target: {fileID: 7842281569451753814, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
       propertyPath: m_Name
       value: HUD - Click UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 7842281569451753814, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1535,7 +1494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1305610867332564268, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1305610867332564268, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1555,11 +1514,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1305610867332564268, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -3.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1305610867332564268, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1305610867332564268, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1762,10 +1721,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hold Bar
       objectReference: {fileID: 0}
-    - target: {fileID: 5032463813725049222, guid: 81d55ac7d817a9443bb8c9d71f83c522, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5829987389651348839, guid: 81d55ac7d817a9443bb8c9d71f83c522, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1846,10 +1801,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8812406949794267846, guid: 81d55ac7d817a9443bb8c9d71f83c522, type: 3}
-      propertyPath: interactObject
-      value: 
-      objectReference: {fileID: 2074531542}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2349,25 +2300,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3771516282685240045, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -45
-      objectReference: {fileID: 0}
-    - target: {fileID: 6710828313863066952, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
-      propertyPath: interactObject
-      value: 
-      objectReference: {fileID: 1456480686}
     - target: {fileID: 7842281569451753814, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
       propertyPath: m_Name
       value: Click UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 7842281569451753814, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8033809856874007466, guid: 414d6bf7809b8754491770f7b06c2cab, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2382,22 +2317,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2011495964}
     m_Modifications:
-    - target: {fileID: 1457863750214825336, guid: 9689154e2484a604c9d91ce1c678b2af, type: 3}
-      propertyPath: m_FillAmount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4249546032425614424, guid: 9689154e2484a604c9d91ce1c678b2af, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482061557279370789, guid: 9689154e2484a604c9d91ce1c678b2af, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 459222070}
-    - target: {fileID: 5036749478569148662, guid: 9689154e2484a604c9d91ce1c678b2af, type: 3}
-      propertyPath: interactObject
-      value: 
-      objectReference: {fileID: 2011495968}
     - target: {fileID: 7501384621297941060, guid: 9689154e2484a604c9d91ce1c678b2af, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2481,22 +2400,6 @@ PrefabInstance:
     - target: {fileID: 7732762716608714765, guid: 9689154e2484a604c9d91ce1c678b2af, type: 3}
       propertyPath: m_Name
       value: Toggle Bar
-      objectReference: {fileID: 0}
-    - target: {fileID: 7732762716608714765, guid: 9689154e2484a604c9d91ce1c678b2af, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7820656147310684617, guid: 9689154e2484a604c9d91ce1c678b2af, type: 3}
-      propertyPath: m_Color.b
-      value: 0.21607128
-      objectReference: {fileID: 0}
-    - target: {fileID: 7820656147310684617, guid: 9689154e2484a604c9d91ce1c678b2af, type: 3}
-      propertyPath: m_Color.g
-      value: 0.72327036
-      objectReference: {fileID: 0}
-    - target: {fileID: 7820656147310684617, guid: 9689154e2484a604c9d91ce1c678b2af, type: 3}
-      propertyPath: m_Color.r
-      value: 0.24248794
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

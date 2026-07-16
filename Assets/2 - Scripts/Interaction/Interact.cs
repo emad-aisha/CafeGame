@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public abstract class Interact : MonoBehaviour {
@@ -20,11 +21,24 @@ public abstract class Interact : MonoBehaviour {
     protected bool hasInteracted; // also double as an "isHeld" bool
     protected bool inRange;
 
+    [HideInInspector] public UnityEvent startUI;
+
+    void Start() {
+        FlashUI flashUi = GetComponentInChildren<FlashUI>();
+        startUI = new UnityEvent();
+
+        startUI.AddListener(flashUi.Begin);
+    }
+
     // shared behavior
     public abstract void StartInteract(InteractionType interactedType);
     protected void Begin() {
         hasInteracted = true;
         UpdateInternalValue();
+        FlashUI();
+    }
+    protected void FlashUI() {
+        startUI.Invoke();
     }
 
     protected void UpdateInternalValue() {

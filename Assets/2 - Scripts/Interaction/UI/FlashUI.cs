@@ -11,7 +11,7 @@ public class FlashUI : MonoBehaviour {
 
     Interact interactObject;
     static int totalObjects;
-    int activeObjects;
+    static int activeObjects;
 
 
     void Start() {
@@ -20,21 +20,21 @@ public class FlashUI : MonoBehaviour {
 
     void Update() {
         if (totalObjects == 0 && activeObjects != 0) activeObjects--;
+    }
 
-        if (interactObject.GetHasInteracted() || interactObject.GetInternalValue() != 0) {
-            StartCoroutine(FlashInteract(interactObject.GetInteractPopup(), interactObject.GetPopupTime()));
-        }
+    public void Begin() {
+        StartCoroutine(FlashInteract(interactObject.GetInteractPopup(), interactObject.GetPopupTime()));
     }
 
 
-    public IEnumerator FlashInteract(string interactText, float time) {
+    IEnumerator FlashInteract(string interactText, float time) {
         activeObjects++;
         totalObjects++;
         GameObject flashObject = Instantiate(baseObject, canvasParent);
         flashObject.SetActive(true);
 
         // set position + text
-        flashObject.GetComponent<RectTransform>().anchoredPosition += new Vector2(0, tranformIncrement * totalObjects);
+        flashObject.GetComponent<RectTransform>().anchoredPosition += new Vector2(0, tranformIncrement * activeObjects);
         flashObject.GetComponent<TMP_Text>().text = interactText;
 
         yield return new WaitForSeconds(time);
