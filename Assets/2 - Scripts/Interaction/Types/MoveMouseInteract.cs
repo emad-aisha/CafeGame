@@ -17,11 +17,9 @@ public class MoveMouseInteract : Interact {
 
         if (hasInteracted) {
             UpdateInternalValue();
-            Debug.Log("update check" + hasInteracted);
 
             inRange = internalValue >= minValue && internalValue <= maxValue;
             if (inRange) hasInteracted = false;
-            Debug.Log("range check" + hasInteracted);
         }
         else if ((needsHeld && inRange) || inRange) {
             Debug.Log("Done");

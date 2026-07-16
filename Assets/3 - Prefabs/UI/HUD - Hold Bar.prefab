@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4439506989117068961
 RectTransform:
   m_ObjectHideFlags: 0
@@ -204,7 +204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f8012635761664ab84a78e02f60e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoldUI
-  interactObject: {fileID: 0}
   bar: {fileID: 2857952844520558735}
   holdRange: {fileID: 219354839619269034}
   greenRange: {fileID: 3539291140379079570}

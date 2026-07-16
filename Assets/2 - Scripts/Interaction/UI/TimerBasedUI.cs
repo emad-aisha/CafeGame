@@ -1,17 +1,18 @@
 using UnityEngine.UI;
 using UnityEngine;
 
-public class HoldUI : MonoBehaviour {
-    [SerializeField] Interact interactObject;
-
-    [Header("")]
+public class TimerBasedUI : MonoBehaviour {
     [SerializeField] GameObject bar;
     [SerializeField] Image holdRange;
     [SerializeField] Image greenRange;
     RectTransform greenTransform;
     float barWidth;
 
+    Interact interactObject;
+
     void Start() {
+        interactObject = transform.parent.gameObject.GetComponent<Interact>();
+
         barWidth = bar.GetComponent<RectTransform>().rect.width;
         greenTransform = greenRange.GetComponent<RectTransform>();
 

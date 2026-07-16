@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public abstract class Interact : MonoBehaviour {
+    [SerializeField] protected string interactPopup;
+    [SerializeField, Range(0.5f, 2)] protected float popupTime = 0.75f; // TODO: make this dynamically change with the size of a string
+
+    [Header("")]
     [SerializeField] protected InteractionType interactType;
     [SerializeField] protected bool isForgiving;
     [SerializeField] protected bool needsHeld;
@@ -50,5 +54,7 @@ public abstract class Interact : MonoBehaviour {
     public float GetMaxValue() { return maxValue; }
 
     public bool GetHasInteracted() { return hasInteracted; }
+    public string GetInteractPopup() { return interactPopup; }
+    public float GetPopupTime() { return popupTime; }
 
 }
