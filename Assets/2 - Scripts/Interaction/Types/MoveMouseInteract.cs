@@ -29,7 +29,6 @@ public class MoveMouseInteract : Interact {
 
     public override void StartInteract(InteractionType interactedType) {
         if (interactType != interactedType) return;
-        Debug.Log("mouseAction: " + mouseAction);
         if (mouseAction.name == "") Begin(); // to prevent bug
 
         // set actions
@@ -37,7 +36,6 @@ public class MoveMouseInteract : Interact {
         if (needsHeld) holdAction = InputManager.instance.GetAction("Interaction", interactedType.ToString()); // mouse delta
 
         GameManager.instance.StopCamera();
-        Debug.Log("start move mouse");
     }
 
     void UpdateMovingMouse() {
