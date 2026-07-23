@@ -1295,6 +1295,9 @@ MonoBehaviour:
   minValue: 0.54
   maxValue: 0.9
   updateScale: 0.5
+  startUI:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!224 &1323988685 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5829987389651348839, guid: 81d55ac7d817a9443bb8c9d71f83c522, type: 3}
@@ -1439,6 +1442,9 @@ MonoBehaviour:
   minValue: 0
   maxValue: 1
   updateScale: 1
+  startUI:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!224 &1520851041 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5829987389651348839, guid: 81d55ac7d817a9443bb8c9d71f83c522, type: 3}
@@ -1676,6 +1682,9 @@ MonoBehaviour:
   minValue: 0.7
   maxValue: 0.95
   updateScale: 0.5
+  startUI:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1798386702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,6 +2029,9 @@ MonoBehaviour:
   minValue: 0.39
   maxValue: 0.88
   updateScale: 0.3
+  startUI:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2074531537
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,6 +2167,9 @@ MonoBehaviour:
   minValue: 0.64
   maxValue: 0.85
   updateScale: 0.62
+  startUI:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &2092357646098911501
 PrefabInstance:
   m_ObjectHideFlags: 0

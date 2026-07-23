@@ -4,10 +4,6 @@ using UnityEngine.InputSystem;
 public class MoveMouseInteract : Interact {
     InputAction mouseAction;
 
-    void Start() {
-        isForgiving = true;
-    }
-
     void Update() {
         if (!hasInteracted && internalValue == 0) return;
 
@@ -25,19 +21,21 @@ public class MoveMouseInteract : Interact {
             Debug.Log("Done");
             GameManager.instance.StartCamera();
             ResetInternalValues();
+            mouseAction = new InputAction("");
         }
 
     }
 
 
-    // TODO: doesnt work
     public override void StartInteract(InteractionType interactedType) {
         if (interactType != interactedType) return;
+        Debug.Log("mouseAction: " + mouseAction);
+        if (mouseAction.name == "") Begin(); // to prevent bug
+
         // set actions
         mouseAction = InputManager.instance.GetAction("Interaction", "MouseMovement"); // mouse delta
         if (needsHeld) holdAction = InputManager.instance.GetAction("Interaction", interactedType.ToString()); // mouse delta
 
-        Begin(); // to prevent bug
         GameManager.instance.StopCamera();
         Debug.Log("start move mouse");
     }
